@@ -54,10 +54,10 @@ body::before{
 /* 🧚‍♀️ FAIRY PEMANIS DI CARD */
 .card-fairy{
   position:absolute;
-  top:-22px;
-  right:-18px;
-  width:58px;
-  z-index:6;
+  top:12px;
+  right:14px;
+  width:52px;
+  z-index:3;
   pointer-events:none;
 
   filter:
@@ -90,7 +90,7 @@ body::before{
 
 /* ===== LETTER CARD ===== */
 .card{
-  background:rgba(255,248,220,0.7); /* 90% transparan */
+  background:rgba(255,248,220,0.5); /* 90% transparan */
   backdrop-filter: blur(6px);       /* efek kaca lembut */
   -webkit-backdrop-filter: blur(6px);
   border-radius:22px;
@@ -320,6 +320,28 @@ const fade=setInterval(()=>{
   audio.volume=v;
 },220);
 document.body.addEventListener("click",()=>audio.play(),{once:true});
+</script>
+<script>
+/* ✨ SPARKLE JATUH KE HURUF K */
+window.addEventListener("load",()=>{
+  const title=document.querySelector("h1");
+  if(!title) return;
+
+  const rect=title.getBoundingClientRect();
+
+  // posisi huruf K (kira-kira sisi kiri judul)
+  const kX = rect.left + rect.width * 0.08;
+  const kY = rect.top + rect.height * 0.55;
+
+  setInterval(()=>{
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=(kX + (Math.random()*6-3))+"px";
+    s.style.top=(kY - 30)+"px";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1600);
+  },900);
+});
 </script>
 
 </body>
