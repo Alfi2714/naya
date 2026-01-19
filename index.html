@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surat Peri untuk Kanaya ✨</title>
+<title>Surat Peri untuk Fairynaya ✨</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -52,7 +52,6 @@
 
 body{
   margin:0;
-  height:100vh;
   overflow:hidden;
   background:url("background.jpg") center/cover no-repeat;
 }
@@ -120,10 +119,10 @@ body::before{
 .container{
   position:relative;
   z-index:3;
-  min-height:95vh;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-start;
   padding:24px;
 }
 
@@ -135,6 +134,7 @@ body::before{
   border-radius:22px;
   padding:34px 28px;
   max-width:720px;
+max-height:none;
   width:90%;
   box-shadow:
     0 30px 60px rgba(0,0,0,.25),
@@ -265,6 +265,52 @@ h1::after{
 @media(max-width:480px){
   h1{font-size:2.2rem}
 }
+/* 📸 PHOTO GALLERY */
+.photo-gallery{
+  margin-top:1px;
+  width:100%;
+  overflow-x:auto;
+  padding:2px 0 14px;
+}
+
+.photo-track{
+  display:flex;
+  gap:14px;
+  padding:0 6px;
+}
+
+.photo-track img{
+  width:120px;
+  aspect-ratio:1 / 1;   /* PASTI PERSEGI */
+  object-fit:cover;
+  border-radius:16px;
+  flex-shrink:0;
+
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.25),
+    0 0 20px rgba(34,197,94,.15);
+
+  transition:.3s ease;
+}
+
+/* efek hover (desktop) */
+.photo-track img:hover{
+  transform:scale(1.05);
+}
+
+/* scrollbar cantik */
+.photo-gallery::-webkit-scrollbar{
+  height:6px;
+}
+.photo-gallery::-webkit-scrollbar-thumb{
+  background:linear-gradient(#bbf7d0,#22c55e);
+  border-radius:10px;
+}
+.photo-gallery::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+
 </style>
 </head>
 
@@ -291,11 +337,11 @@ h1::after{
     <div class="message">
       Di Pixie Hollow, setiap cahaya kecil
       dipercaya punya arti.<br>
-      Dan bagiku, kamu adalah cahaya itu.<br>
+      Dan bagiku, kamu adalah cahaya itu.<br><br>
+
       cahaya tidak pernah benar-benar pergi.<br>
       Ia hanya belajar menunggu,
-      lalu pulang,
-     dengan hangat yang sama.<br><br>
+      lalu pulang dengan hangat yang sama.<br><br>
 
       Jarak mungkin memisahkan,
       tapi seperti peri,<br>
@@ -324,7 +370,21 @@ h1::after{
 
     <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya</div>
   </div>
+</div></div> <!-- akhir .card -->
+
+<!-- 📸 GALERI KENANGAN -->
+<div class="photo-gallery">
+  <div class="photo-track">
+    <img src="foto1.jpg" alt="Kenangan 1">
+    <img src="foto2.jpg" alt="Kenangan 2">
+    <img src="foto3.jpg" alt="Kenangan 3">
+    <img src="foto4.jpg" alt="Kenangan 4">
+    <!-- tambah sebanyak yang kamu mau -->
+  </div>
 </div>
+
+</div> <!-- akhir .container -->
+
 
 <script>
 /* 🎉 CONFETTI HALUS */
@@ -394,4 +454,3 @@ window.addEventListener("load",()=>{
 
 </body>
 </html>
-
