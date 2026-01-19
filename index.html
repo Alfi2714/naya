@@ -282,10 +282,12 @@ h1::after{
 .photo-gallery{
   position: relative;
   z-index: 5;
-  margin-top:15px;
+  margin-top: -40px; /* geser 40px ke atas */
   width:100%;
   overflow-x:auto;
   padding:2px 0 14px;
+  position: relative;  /* pastikan z-index tetap berfungsi */
+  z-index: 5;          /* tetap muncul di atas overlay */
 }
 
 .photo-track {
@@ -473,3 +475,4 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
+
