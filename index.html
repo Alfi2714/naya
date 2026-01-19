@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Kanaya ✨</title>
+<title>Surat Peri untuk Kanaya ✨</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
@@ -14,7 +15,6 @@ body{
   margin:0;
   height:100vh;
   overflow:hidden;
-  font-family:"Georgia", serif;
   background:url("background.jpg") center/cover no-repeat;
 }
 body::before{
@@ -25,7 +25,33 @@ body::before{
   z-index:0;
 }
 
-/* ================= LAYOUT ================= */
+.message{
+  margin-top:26px;
+  font-family:"IM Fell English", serif;
+  font-size:1.15rem;
+  line-height:1.9;
+  color:#3b2f1d;
+
+  max-height:45vh;          /* tinggi area scroll */
+  overflow-y:auto;          /* aktifkan scroll */
+  padding-right:10px;       /* jarak scrollbar */
+  scrollbar-width:thin;     /* Firefox */
+  scrollbar-color:#86efac transparent;
+}
+
+/* Scrollbar halus (Chrome, Edge, Safari) */
+.message::-webkit-scrollbar{
+  width:6px;
+}
+.message::-webkit-scrollbar-track{
+  background:transparent;
+}
+.message::-webkit-scrollbar-thumb{
+  background:linear-gradient(#bbf7d0,#22c55e);
+  border-radius:10px;
+}
+
+/* ===== LAYOUT ===== */
 .container{
   position:relative;
   z-index:3;
@@ -36,122 +62,99 @@ body::before{
   padding:24px;
 }
 
+/* ===== LETTER CARD ===== */
 .card{
-  max-width:420px;
-  width:100%;
-  background:rgba(15,23,42,.6);
-  backdrop-filter:blur(14px);
-  border-radius:22px;
-  padding:30px;
+  max-width:440px;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.65), transparent 60%),
+    linear-gradient(180deg,#fdfcf7,#f4f1e6);
+  border-radius:14px;
+  padding:34px 28px;
   text-align:center;
-  box-shadow:0 30px 90px rgba(0,0,0,.65);
+  box-shadow:0 40px 90px rgba(0,0,0,.6);
+  position:relative;
   animation:fadeUp 2s ease forwards;
 }
-
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
+  to{opacity:1}
 }
 
-/* ================= TITLE ================= */
+/* ===== ✨ ENGRAVED NAME ===== */
 h1{
   margin:0;
-  font-size:2.5rem;
-  color:#ecfdf5;
-  text-shadow:
-    0 0 10px #6ee7b7,
-    0 0 26px #34d399,
-    0 0 50px #22c55e;
-  animation:greenGlow 4s ease-in-out infinite alternate;
+  font-family:"Calligraffitti", cursive;
+  font-size:2.7rem;
+  background:linear-gradient(120deg,#14532d,#22c55e,#bbf7d0,#22c55e,#14532d);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:300% 100%;
+  animation:engrave 6s ease-in-out infinite;
+  position:relative;
 }
-
-@keyframes greenGlow{
-  from{
-    text-shadow:
-      0 0 8px #6ee7b7,
-      0 0 18px #34d399,
-      0 0 36px #22c55e;
-  }
-  to{
-    text-shadow:
-      0 0 18px #bbf7d0,
-      0 0 40px #4ade80,
-      0 0 70px #22c55e;
-  }
+@keyframes engrave{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
 }
-
-.subtitle{
-  margin-top:10px;
-  font-size:.85rem;
-  letter-spacing:2px;
-  opacity:.8;
-}
-
-.message{
-  margin-top:22px;
-  font-size:1.05rem;
-  line-height:1.8;
-}
-
-.footer{
-  margin-top:24px;
-  font-size:.85rem;
-  opacity:.7;
-}
-
-/* ================= FAIRIES ================= */
-.fairy{
-  position:fixed;
-  width:52px;
-  z-index:6;
-  pointer-events:none;
-  filter:drop-shadow(0 0 16px rgba(134,239,172,.9));
-  opacity:.9;
-}
-
-/* smooth natural paths */
-@keyframes fairyA{
-  0%{transform:translate(-120px,18vh) rotate(2deg)}
-  50%{transform:translate(60vw,14vh) rotate(-3deg)}
-  100%{transform:translate(110vw,20vh) rotate(2deg)}
-}
-@keyframes fairyB{
-  0%{transform:translate(110vw,42vh) rotate(-2deg)}
-  50%{transform:translate(50vw,38vh) rotate(3deg)}
-  100%{transform:translate(-120px,45vh) rotate(-2deg)}
-}
-@keyframes fairyC{
-  0%{transform:translate(28vw,-120px) rotate(1deg)}
-  50%{transform:translate(32vw,42vh) rotate(-2deg)}
-  100%{transform:translate(36vw,110vh) rotate(1deg)}
-}
-
-/* ================= ORBIT FAIRY ================= */
-.orbit{
+h1::after{
+  content:"Kanaya";
   position:absolute;
   inset:0;
-  z-index:5;
+  text-shadow:
+    0 0 6px #6ee7b7,
+    0 0 18px #34d399,
+    0 0 40px #22c55e;
   pointer-events:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.ring{
-  width:260px;
-  height:260px;
-  position:relative;
-  animation:spin 36s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.ring img{
-  position:absolute;
-  top:-20px;
-  left:50%;
-  transform:translateX(-50%);
-  width:40px;
 }
 
-/* ================= SPARKLES ================= */
+/* ===== TEXT ===== */
+.subtitle{
+  margin-top:10px;
+  font-family:"IM Fell English", serif;
+  font-style:italic;
+  letter-spacing:2px;
+  color:#3f6212;
+}
+.message{
+  margin-top:26px;
+  font-family:"IM Fell English", serif;
+  font-size:1.15rem;
+  line-height:1.9;
+  color:#3b2f1d;
+}
+.footer{
+  margin-top:28px;
+  font-style:italic;
+  opacity:.75;
+}
+
+/* ===== FAIRIES ===== */
+.fairy{
+  position:fixed;
+  width:46px;
+  z-index:7;
+  pointer-events:none;
+  filter:drop-shadow(0 0 14px rgba(134,239,172,.9));
+}
+
+@keyframes fairyA{
+  0%{transform:translate(-120px,18vh)}
+  50%{transform:translate(60vw,14vh)}
+  100%{transform:translate(110vw,20vh)}
+}
+@keyframes fairyB{
+  0%{transform:translate(110vw,42vh)}
+  50%{transform:translate(50vw,38vh)}
+  100%{transform:translate(-120px,45vh)}
+}
+@keyframes fairyC{
+  0%{transform:translate(28vw,-120px)}
+  50%{transform:translate(32vw,42vh)}
+  100%{transform:translate(36vw,110vh)}
+}
+
+/* ===== ✨ SPARKLE TRAIL ===== */
 .sparkle{
   position:fixed;
   width:6px;
@@ -159,24 +162,26 @@ h1{
   border-radius:50%;
   background:radial-gradient(circle,#bbf7d0,#22c55e);
   pointer-events:none;
-  z-index:7;
-  animation:spark 1.4s ease-out forwards;
-}
-@keyframes spark{
-  from{opacity:.9; transform:scale(1)}
-  to{opacity:0; transform:translateY(14px) scale(0)}
+  z-index:9; /* di atas teks */
+  opacity:.9;
+  animation:sparkleFade 1.6s ease-out forwards;
 }
 
-/* ================= LEAVES ================= */
+@keyframes sparkleFade{
+  from{transform:scale(1); opacity:.9}
+  to{transform:translateY(12px) scale(0); opacity:0}
+}
+
+/* ===== 🍃 LEAVES FOREGROUND ===== */
 .leaf{
   position:fixed;
   top:-40px;
-  width:16px;
-  height:16px;
-  background:linear-gradient(135deg,#22c55e,#86efac);
+  width:22px;
+  height:22px;
+  background:linear-gradient(135deg,#22c55e,#bbf7d0);
   border-radius:0 100% 0 100%;
-  opacity:.55;
-  z-index:4;
+  opacity:.75;
+  z-index:8;
   pointer-events:none;
   animation:leafFall linear infinite;
 }
@@ -185,8 +190,7 @@ h1{
 }
 
 @media(max-width:480px){
-  h1{font-size:2rem}
-  .fairy{width:46px}
+  h1{font-size:2.2rem}
 }
 </style>
 </head>
@@ -194,16 +198,9 @@ h1{
 <body>
 
 <!-- FAIRIES -->
-<img src="tinker1.png" class="fairy" style="animation:fairyA 52s linear infinite;">
-<img src="tinker1.png" class="fairy" style="animation:fairyB 58s linear infinite;">
-<img src="tinker1.png" class="fairy" style="animation:fairyC 64s linear infinite;">
-
-<!-- ORBIT FAIRY -->
-<div class="orbit">
-  <div class="ring">
-    <img src="tinker1.png">
-  </div>
-</div>
+<img src="tinker1.png" class="fairy" style="animation:fairyA 60s linear infinite;">
+<img src="tinker1.png" class="fairy" style="animation:fairyB 66s linear infinite;">
+<img src="tinker1.png" class="fairy" style="animation:fairyC 72s linear infinite;">
 
 <!-- AUDIO -->
 <audio id="bgm" src="lagu.mp3" loop></audio>
@@ -211,61 +208,86 @@ h1{
 <div class="container">
   <div class="card">
     <h1>Kanaya</h1>
-    <div class="subtitle">PIXIE HOLLOW ✦ BIRTHDAY</div>
+    <div class="subtitle">A Birthday Letter From Pixie Hollow</div>
+
     <div class="message">
-      Jarak hanyalah ruang,<br>
-      bukan penghalang untuk rasa yang pulang.<br><br>
-      Di hari lahirmu,<br>
-      semoga dunia lembut padamu.<br>
-      Dan jika lelah—<br>
-      aku selalu ada, di jarak yang sama.
-    </div>
-    <div class="footer">— selalu menunggumu</div>
+      Di Pixie Hollow, setiap cahaya kecil
+      dipercaya punya arti.<br>
+      Dan bagiku, kamu adalah cahaya itu.<br>
+      cahaya tidak pernah benar-benar pergi.<br>
+      Ia hanya belajar menunggu,
+      lalu pulang,
+     dengan hangat yang sama.<br><br>
+
+      Jarak mungkin memisahkan,
+      tapi seperti peri,<br>
+      kita selalu menemukan cara
+      untuk tetap saling mendekat.<br><br>
+
+      Seperti Tinkerbell yang terbang
+      mengikuti keyakinannya sendiri,<br>
+      kamu menjalani hidup
+      dengan caramu,<br>
+      pelan tapi pasti,
+      sederhana namun bermakna.<br><br>
+      
+      Semoga hidupmu terasa lebih ringan, lebih hangat<br>
+      dan selalu dipenuhi hal-hal kecil
+      yang membuatmu tersenyum.<br><br>
+
+      Di hari lahirmu,
+      semoga hidupmu terasa lebih ringan,
+      hatimu tetap hangat,
+      dan setiap hari
+      menemukan alasan kecil
+      untuk tersenyum—
+      dengan atau tanpa sayap.<br><br>
+          </div>
+
+    <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya</div>
   </div>
 </div>
 
 <script>
-/* CONFETTI SOFT CONTINUOUS */
-setInterval(()=>{
-  confetti({
-    particleCount:2,
-    spread:60,
-    origin:{x:Math.random(), y:0}
-  });
-},650);
+/* 🎉 CONFETTI HALUS */
+setInterval(()=>confetti({
+  particleCount:2,
+  spread:60,
+  origin:{x:Math.random(), y:0}
+}),700);
 
-/* SPARKLE TRAILS */
+/* 🍃 LEAVES */
 setInterval(()=>{
-  document.querySelectorAll('.fairy, .ring img').forEach(f=>{
-    const r=f.getBoundingClientRect();
-    const s=document.createElement('div');
-    s.className='sparkle';
-    s.style.left=r.left+r.width/2+'px';
-    s.style.top=r.top+r.height/2+'px';
-    document.body.appendChild(s);
-    setTimeout(()=>s.remove(),1400);
-  });
-},320);
-
-/* LEAVES */
-setInterval(()=>{
-  const l=document.createElement('div');
-  l.className='leaf';
-  l.style.left=Math.random()*100+'vw';
-  l.style.animationDuration=(14+Math.random()*10)+'s';
+  const l=document.createElement("div");
+  l.className="leaf";
+  l.style.left=Math.random()*100+"vw";
+  l.style.animationDuration=(12+Math.random()*10)+"s";
   document.body.appendChild(l);
   setTimeout(()=>l.remove(),26000);
-},1400);
+},600);
 
-/* MUSIC FADE-IN */
+/* ✨ FAIRY SPARKLE TRAIL */
+setInterval(()=>{
+  document.querySelectorAll(".fairy").forEach(f=>{
+    const r=f.getBoundingClientRect();
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=(r.left + r.width/2)+"px";
+    s.style.top=(r.top + r.height/2)+"px";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1600);
+  });
+},280);
+
+/* 🎶 MUSIC FADE-IN */
 const audio=document.getElementById("bgm");
 audio.volume=0;
 audio.play().catch(()=>{});
-let vol=0;
+let v=0;
 const fade=setInterval(()=>{
-  if(vol>=0.45) return clearInterval(fade);
-  vol+=0.01;
-  audio.volume=vol;
+  if(v>=0.45) return clearInterval(fade);
+  v+=0.01;
+  audio.volume=v;
 },220);
 document.body.addEventListener("click",()=>audio.play(),{once:true});
 </script>
