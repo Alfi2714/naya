@@ -51,20 +51,30 @@ body::before{
   border-radius:10px;
 }
 
-/* 🧚‍♀️ FAIRY PEMANIS DI DALAM CARD */
+/* 🧚‍♀️ FAIRY PEMANIS DI CARD */
 .card-fairy{
   position:absolute;
-  top:12px;
-  right:14px;
-  width:52px;
-  z-index:3;           /* di atas kertas, di bawah daun */
+  top:-22px;
+  right:-18px;
+  width:58px;
+  z-index:6;
   pointer-events:none;
 
   filter:
-    drop-shadow(0 0 8px rgba(255,215,0,.9))
-    drop-shadow(0 0 16px rgba(34,197,94,.6));
+    drop-shadow(0 0 10px rgba(255,215,0,.9))
+    drop-shadow(0 0 22px rgba(34,197,94,.6));
 
-  animation:softFloat 7s ease-in-out infinite;
+  animation:softFloat 6s ease-in-out infinite;
+}
+
+/* gerak sangat halus (hidup tapi tidak terbang) */
+@keyframes softFloat{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-6px) rotate(2deg);
+  }
 }
 
 /* ===== LAYOUT ===== */
