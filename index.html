@@ -11,186 +11,263 @@
 *{box-sizing:border-box}
 
 body{
-  margin:0; height:100vh; overflow:hidden;
+  margin:0;
+  height:100vh;
+  overflow:hidden;
   font-family:"Georgia", serif;
   background:url("background.jpg") center/cover no-repeat;
 }
 body::before{
-  content:""; position:fixed; inset:0;
-  background:rgba(0,0,0,.45); z-index:0;
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:0;
 }
 
-/* ===== LAYOUT ===== */
+/* ================= LAYOUT ================= */
 .container{
-  position:relative; z-index:2;
-  min-height:100vh; display:flex;
-  align-items:center; justify-content:center;
+  position:relative;
+  z-index:3;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding:24px;
 }
+
 .card{
-  max-width:420px; width:100%;
+  max-width:420px;
+  width:100%;
   background:rgba(15,23,42,.6);
-  backdrop-filter:blur(12px);
-  border-radius:20px; padding:28px;
+  backdrop-filter:blur(14px);
+  border-radius:22px;
+  padding:30px;
   text-align:center;
-  box-shadow:0 25px 70px rgba(0,0,0,.6);
-  animation:fadeUp 1.6s ease forwards;
+  box-shadow:0 30px 90px rgba(0,0,0,.65);
+  animation:fadeUp 2s ease forwards;
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1}}
 
-/* ===== TITLE ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+
+/* ================= TITLE ================= */
 h1{
-  margin:0; font-size:2.4rem; color:#ecfdf5;
-  text-shadow:0 0 8px #6ee7b7,0 0 18px #34d399,0 0 32px #22c55e;
-  animation:greenGlow 3s ease-in-out infinite alternate;
+  margin:0;
+  font-size:2.5rem;
+  color:#ecfdf5;
+  text-shadow:
+    0 0 10px #6ee7b7,
+    0 0 26px #34d399,
+    0 0 50px #22c55e;
+  animation:greenGlow 4s ease-in-out infinite alternate;
 }
-@keyframes greenGlow{
-  from{ text-shadow:0 0 6px #6ee7b7,0 0 14px #34d399,0 0 26px #22c55e}
-  to{ text-shadow:0 0 14px #bbf7d0,0 0 32px #4ade80,0 0 48px #22c55e}
-}
-.subtitle{margin-top:8px; font-size:.9rem; letter-spacing:2px; opacity:.8}
-.message{margin-top:20px; font-size:1.05rem; line-height:1.7}
-.footer{margin-top:22px; font-size:.85rem; opacity:.7}
 
-/* ===== FAIRIES ===== */
+@keyframes greenGlow{
+  from{
+    text-shadow:
+      0 0 8px #6ee7b7,
+      0 0 18px #34d399,
+      0 0 36px #22c55e;
+  }
+  to{
+    text-shadow:
+      0 0 18px #bbf7d0,
+      0 0 40px #4ade80,
+      0 0 70px #22c55e;
+  }
+}
+
+.subtitle{
+  margin-top:10px;
+  font-size:.85rem;
+  letter-spacing:2px;
+  opacity:.8;
+}
+
+.message{
+  margin-top:22px;
+  font-size:1.05rem;
+  line-height:1.8;
+}
+
+.footer{
+  margin-top:24px;
+  font-size:.85rem;
+  opacity:.7;
+}
+
+/* ================= FAIRIES ================= */
 .fairy{
-  position:fixed; width:60px; z-index:5; pointer-events:none;
+  position:fixed;
+  width:52px;
+  z-index:6;
+  pointer-events:none;
   filter:drop-shadow(0 0 16px rgba(134,239,172,.9));
   opacity:.9;
 }
-@keyframes drift1{
-  0%{transform:translate(-120px,12vh) rotate(2deg)}
-  50%{transform:translate(55vw,6vh) rotate(-3deg)}
-  100%{transform:translate(110vw,14vh) rotate(2deg)}
+
+/* smooth natural paths */
+@keyframes fairyA{
+  0%{transform:translate(-120px,18vh) rotate(2deg)}
+  50%{transform:translate(60vw,14vh) rotate(-3deg)}
+  100%{transform:translate(110vw,20vh) rotate(2deg)}
 }
-@keyframes drift2{
-  0%{transform:translate(110vw,36vh) rotate(-2deg)}
-  50%{transform:translate(45vw,42vh) rotate(3deg)}
-  100%{transform:translate(-120px,32vh) rotate(-2deg)}
+@keyframes fairyB{
+  0%{transform:translate(110vw,42vh) rotate(-2deg)}
+  50%{transform:translate(50vw,38vh) rotate(3deg)}
+  100%{transform:translate(-120px,45vh) rotate(-2deg)}
 }
-@keyframes drift3{
-  0%{transform:translate(22vw,-120px) rotate(1deg)}
-  50%{transform:translate(26vw,38vh) rotate(-2deg)}
-  100%{transform:translate(30vw,110vh) rotate(1deg)}
+@keyframes fairyC{
+  0%{transform:translate(28vw,-120px) rotate(1deg)}
+  50%{transform:translate(32vw,42vh) rotate(-2deg)}
+  100%{transform:translate(36vw,110vh) rotate(1deg)}
 }
 
-/* ===== ORBIT FAIRY (KANAYA) ===== */
+/* ================= ORBIT FAIRY ================= */
 .orbit{
-  position:absolute; inset:0; pointer-events:none; z-index:4;
-  display:flex; align-items:center; justify-content:center;
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.orbit .ring{
-  width:260px; height:260px; position:relative;
-  animation:spin 28s linear infinite;
+.ring{
+  width:260px;
+  height:260px;
+  position:relative;
+  animation:spin 36s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-.orbit img{
-  position:absolute; top:-22px; left:50%;
+.ring img{
+  position:absolute;
+  top:-20px;
+  left:50%;
   transform:translateX(-50%);
-  width:42px;
-  filter:drop-shadow(0 0 14px rgba(134,239,172,.9));
+  width:40px;
 }
 
-/* ===== SPARKLES ===== */
+/* ================= SPARKLES ================= */
 .sparkle{
-  position:fixed; width:6px; height:6px; border-radius:50%;
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
   background:radial-gradient(circle,#bbf7d0,#22c55e);
-  pointer-events:none; z-index:6; opacity:.8;
-  animation:spark 1.2s ease-out forwards;
+  pointer-events:none;
+  z-index:7;
+  animation:spark 1.4s ease-out forwards;
 }
 @keyframes spark{
-  from{transform:scale(1); opacity:.9}
-  to{transform:translateY(12px) scale(0); opacity:0}
+  from{opacity:.9; transform:scale(1)}
+  to{opacity:0; transform:translateY(14px) scale(0)}
 }
 
-/* ===== LEAVES ===== */
+/* ================= LEAVES ================= */
 .leaf{
-  position:fixed; top:-40px; width:18px; height:18px;
+  position:fixed;
+  top:-40px;
+  width:16px;
+  height:16px;
   background:linear-gradient(135deg,#22c55e,#86efac);
   border-radius:0 100% 0 100%;
-  opacity:.6; z-index:3; pointer-events:none;
+  opacity:.55;
+  z-index:4;
+  pointer-events:none;
   animation:leafFall linear infinite;
 }
 @keyframes leafFall{
-  to{ transform:translateY(110vh) rotate(360deg) }
+  to{transform:translateY(110vh) rotate(360deg)}
 }
 
 @media(max-width:480px){
   h1{font-size:2rem}
-  .fairy{width:54px}
+  .fairy{width:46px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🧚 FAIRIES TERBANG -->
-<img src="tinker1.png" class="fairy" style="animation:drift1 42s linear infinite;">
-<img src="tinker1.png" class="fairy" style="animation:drift2 48s linear infinite;">
-<img src="tinker1.png" class="fairy" style="animation:drift3 54s linear infinite;">
+<!-- FAIRIES -->
+<img src="tinker1.png" class="fairy" style="animation:fairyA 52s linear infinite;">
+<img src="tinker1.png" class="fairy" style="animation:fairyB 58s linear infinite;">
+<img src="tinker1.png" class="fairy" style="animation:fairyC 64s linear infinite;">
 
-<!-- 🧚 ORBIT FAIRY -->
+<!-- ORBIT FAIRY -->
 <div class="orbit">
   <div class="ring">
-    <img src="tinker1.png" alt="">
+    <img src="tinker1.png">
   </div>
 </div>
 
-<!-- 🎵 AUDIO -->
+<!-- AUDIO -->
 <audio id="bgm" src="lagu.mp3" loop></audio>
 
 <div class="container">
   <div class="card">
     <h1>Kanaya</h1>
-    <div class="subtitle">PIXIE HOLLOW MOMENT</div>
+    <div class="subtitle">PIXIE HOLLOW ✦ BIRTHDAY</div>
     <div class="message">
-      Jarak tidak pernah benar-benar memisahkan<br>
-      dua hati yang tahu ke mana harus pulang.<br><br>
-      Di hari lahirmu, semoga dunia berjalan lembut padamu.<br>
-      Jika lelah, ingat—aku menunggu di jarak yang sama.
+      Jarak hanyalah ruang,<br>
+      bukan penghalang untuk rasa yang pulang.<br><br>
+      Di hari lahirmu,<br>
+      semoga dunia lembut padamu.<br>
+      Dan jika lelah—<br>
+      aku selalu ada, di jarak yang sama.
     </div>
-    <div class="footer">— dengan rindu yang tenang</div>
+    <div class="footer">— selalu menunggumu</div>
   </div>
 </div>
 
 <script>
-/* 🎉 CONFETTI LEMBUT TERUS */
-setInterval(()=>confetti({
-  particleCount:2, spread:70, origin:{x:Math.random(), y:0}
-}),700);
-
-/* ✨ SPARKLE TRAILS */
+/* CONFETTI SOFT CONTINUOUS */
 setInterval(()=>{
-  document.querySelectorAll('.fairy').forEach(f=>{
+  confetti({
+    particleCount:2,
+    spread:60,
+    origin:{x:Math.random(), y:0}
+  });
+},650);
+
+/* SPARKLE TRAILS */
+setInterval(()=>{
+  document.querySelectorAll('.fairy, .ring img').forEach(f=>{
     const r=f.getBoundingClientRect();
     const s=document.createElement('div');
     s.className='sparkle';
-    s.style.left=(r.left+r.width/2)+'px';
-    s.style.top=(r.top+r.height/2)+'px';
+    s.style.left=r.left+r.width/2+'px';
+    s.style.top=r.top+r.height/2+'px';
     document.body.appendChild(s);
-    setTimeout(()=>s.remove(),1200);
+    setTimeout(()=>s.remove(),1400);
   });
-},350);
+},320);
 
-/* 🍃 LEAVES */
+/* LEAVES */
 setInterval(()=>{
   const l=document.createElement('div');
   l.className='leaf';
   l.style.left=Math.random()*100+'vw';
-  l.style.animationDuration=(12+Math.random()*8)+'s';
+  l.style.animationDuration=(14+Math.random()*10)+'s';
   document.body.appendChild(l);
-  setTimeout(()=>l.remove(),20000);
-},1200);
+  setTimeout(()=>l.remove(),26000);
+},1400);
 
-/* 🎶 AUDIO FADE-IN */
-const audio=document.getElementById('bgm');
-audio.volume=0; audio.play().catch(()=>{});
-let v=0;
+/* MUSIC FADE-IN */
+const audio=document.getElementById("bgm");
+audio.volume=0;
+audio.play().catch(()=>{});
+let vol=0;
 const fade=setInterval(()=>{
-  if(v>=0.4) return clearInterval(fade);
-  v+=0.01; audio.volume=v;
-},200);
-document.body.addEventListener('click',()=>audio.play(),{once:true});
+  if(vol>=0.45) return clearInterval(fade);
+  vol+=0.01;
+  audio.volume=vol;
+},220);
+document.body.addEventListener("click",()=>audio.play(),{once:true});
 </script>
 
 </body>
