@@ -58,8 +58,11 @@ body {
 }
 
 body {
-  background: url("background.jpg") top/cover no-repeat;
-  background-attachment: scroll; /* background ikut scroll */
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;       /* cover seluruh viewport */
+  background-attachment: fixed; /* tetap terlihat saat scroll */
 }
 body::before{
   content:"";
@@ -144,7 +147,7 @@ body::before{
   border-radius:22px;
   padding:34px 28px;
   max-width:720px;
-max-height:none;
+  max-height:none;
   width:90%;
   box-shadow:
     0 30px 60px rgba(0,0,0,.25),
@@ -285,10 +288,15 @@ h1::after{
   padding:2px 0 14px;
 }
 
-.photo-track{
-  display:flex;
-  gap:14px;
-  padding:0 6px;
+.photo-track {
+  display: inline-flex;     /* biar ukurannya sesuai isi */
+  gap: 14px;
+  padding: 0 6px;
+}
+.photo-gallery {
+  text-align: center;       /* center inline-flex */
+  overflow-x: auto;         /* tetap scrollable */
+  white-space: nowrap;      /* biar horizontal tetap inline */
 }
 
 .photo-track img{
@@ -350,37 +358,23 @@ h1::after{
     <div class="subtitle">A Birthday Letter From Pixie Hollow</div>
 
     <div class="message">
-      Di Pixie Hollow, setiap cahaya kecil
-      dipercaya punya arti.<br>
+      Di Pixie Hollow, setiap cahaya kecil dipercaya punya arti.<br>
       Dan bagiku, kamu adalah cahaya itu.<br><br>
 
-      cahaya tidak pernah benar-benar pergi.<br>
-      Ia hanya belajar menunggu,
-      lalu pulang dengan hangat yang sama.<br><br>
+      Cahaya tidak pernah benar-benar pergi.<br>
+      Ia hanya belajar menunggu, lalu pulang dengan hangat yang sama.<br><br>
 
-      Jarak mungkin memisahkan,
-      tapi seperti peri,<br>
-      kita selalu menemukan cara
-      untuk tetap saling mendekat.<br><br>
+      Jarak mungkin memisahkan, tapi seperti peri,<br>
+      kita selalu menemukan cara untuk tetap saling mendekat.<br><br>
 
-      Seperti Tinkerbell yang terbang
-      mengikuti keyakinannya sendiri,<br>
-      kamu menjalani hidup
-      dengan caramu,<br>
-      pelan tapi pasti,
-      sederhana namun bermakna.<br><br>
+      Seperti Tinkerbell yang terbang mengikuti keyakinannya sendiri,<br>
+      kamu menjalani hidup dengan caramu,<br>
+      pelan tapi pasti, sederhana namun bermakna.<br><br>
       
       Semoga hidupmu terasa lebih ringan, lebih hangat<br>
-      dan selalu dipenuhi hal-hal kecil
-      yang membuatmu tersenyum.<br><br>
+      dan selalu dipenuhi hal-hal kecil yang membuatmu tersenyum.<br><br>
 
-      Di hari lahirmu,
-      semoga hidupmu terasa lebih ringan,
-      hatimu tetap hangat,
-      dan setiap hari
-      menemukan alasan kecil
-      untuk tersenyum—
-      dengan atau tanpa sayap.<br><br>
+      Di hari lahirmu, semoga hidupmu terasa lebih ringan, hatimu tetap hangat, dan setiap hari menemukan alasan kecil untuk tersenyum—dengan atau tanpa sayap.<br><br>
           </div>
 
     <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya</div>
