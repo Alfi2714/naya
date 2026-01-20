@@ -206,27 +206,60 @@ h1::after{
 /* ===== FAIRIES ===== */
 .fairy{
   position:fixed;
-  width:46px;
+  width:50px;
   z-index:7;
   pointer-events:none;
   filter:drop-shadow(0 0 14px rgba(134,239,172,.9));
 }
 
 @keyframes fairyA{
-  0%{transform:translate(-120px,18vh)}
-  50%{transform:translate(60vw,14vh)}
-  100%{transform:translate(110vw,20vh)}
+  0%   {transform:translate(-140px, 18vh) rotate(0deg);}
+  15%  {transform:translate(10vw, 24vh) rotate(6deg);}
+  35%  {transform:translate(35vw, 12vh) rotate(-8deg);}
+  55%  {transform:translate(60vw, 28vh) rotate(10deg);}
+  75%  {transform:translate(85vw, 20vh) rotate(-6deg);}
+  100% {transform:translate(120vw, 32vh) rotate(0deg);}
 }
+
 @keyframes fairyB{
-  0%{transform:translate(110vw,42vh)}
-  50%{transform:translate(50vw,38vh)}
-  100%{transform:translate(-120px,45vh)}
+  0%   {transform:translate(120vw, 42vh) rotate(0deg);}
+  20%  {transform:translate(90vw, 38vh) rotate(-6deg);}
+  40%  {transform:translate(65vw, 48vh) rotate(8deg);}
+  60%  {transform:translate(40vw, 36vh) rotate(-10deg);}
+  80%  {transform:translate(15vw, 52vh) rotate(6deg);}
+  100% {transform:translate(-140px, 46vh) rotate(0deg);}
 }
+
 @keyframes fairyC{
-  0%{transform:translate(28vw,-120px)}
-  50%{transform:translate(32vw,42vh)}
-  100%{transform:translate(36vw,110vh)}
+  0%   {transform:translate(28vw, -160px) rotate(-8deg);}
+  20%  {transform:translate(34vw, 16vh) rotate(6deg);}
+  45%  {transform:translate(40vw, 42vh) rotate(-10deg);}
+  70%  {transform:translate(46vw, 68vh) rotate(8deg);}
+  100% {transform:translate(52vw, 120vh) rotate(0deg);}
 }
+
+@keyframes fairyD{
+  0%   {transform:translate(120vw, 60vh) rotate(0deg);}
+  18%  {transform:translate(82vw, 48vh) rotate(-8deg);}
+  36%  {transform:translate(64vw, 66vh) rotate(10deg);}
+  54%  {transform:translate(42vw, 40vh) rotate(-12deg);}
+  72%  {transform:translate(18vw, 62vh) rotate(8deg);}
+  100% {transform:translate(-140px, 50vh) rotate(0deg);}
+}
+
+@keyframes fairyE{
+  0%{transform:translate(-140px, 120vh) rotate(-8deg);
+    opacity:0;}
+  10%{opacity:1;}
+  25%{transform:translate(18vw, 88vh) rotate(6deg);}
+  45%{transform:translate(36vw, 62vh) rotate(-10deg);}
+  65%{transform:translate(58vw, 38vh) rotate(12deg);}
+  85%{transform:translate(76vw, 14vh) rotate(-6deg);}
+  100%{transform:translate(92vw, -160px) rotate(0deg);}
+}
+
+
+
 
 /* ===== ✨ SPARKLE TRAIL ===== */
 .sparkle{
@@ -360,11 +393,11 @@ h1::after{
 <body>
 
 <!-- FAIRIES -->
-<img src="tinker4.png" class="fairy" style="animation:fairyA 60s linear infinite;">
-<img src="tinker5.png" class="fairy" style="animation:fairyB 66s linear infinite;">
-<img src="tinker6.png" class="fairy" style="animation:fairyC 72s linear infinite;">
-<img src="tinker7.png" class="fairy" style="animation:fairyA 68s linear infinite;">
-<img src="tinker8.png" class="fairy" style="animation:fairyB 74s linear infinite;">
+<img src="tinker4.png" class="fairy" style="animation:fairyA 42s linear infinite;">
+<img src="tinker5.png" class="fairy" style="animation:fairyB 48s linear infinite;">
+<img src="tinker6.png" class="fairy" style="animation:fairyC 54s linear infinite;">
+<img src="tinker7.png" class="fairy" style="animation:fairyD 46s linear infinite;">
+<img src="tinker8.png" class="fairy" style="animation:fairyE 52s linear infinite;">
 
 <!-- AUDIO -->
 <audio id="bgm" src="lagu.mp3" loop></audio>
@@ -522,7 +555,7 @@ const fairies = document.querySelectorAll('.fairy');
 
 fairies.forEach((fairy, i) => {
 
-  const animations = ['fairyA','fairyB','fairyC'];
+  const animations = ['fairyA','fairyB','fairyC','fairyD','fairyE'];
 
   /* animasi dasar beda */
   fairy.style.animationName =
@@ -537,7 +570,6 @@ fairies.forEach((fairy, i) => {
   fairy.style.top  = (Math.random()*80) + 'vh';
 
   /* karakter visual */
-  const scale = 0.75 + Math.random()*0.55;
   const flip  = Math.random() > 0.5 ? -1 : 1;
 
   fairy.dataset.scale = scale;
@@ -567,7 +599,6 @@ setInterval(()=>{
 
     fairy.style.transform = `
       translate(${dx}px, ${dy}px)
-      scale(${fairy.dataset.scale})
       scaleX(${fairy.dataset.flip})
     `;
   });
