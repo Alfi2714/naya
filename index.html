@@ -218,7 +218,7 @@ h1::after{
 @keyframes fairyA-touchK {
   0% {
     transform: translate(-180px, 20vh) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 1;
   }
 
   20% {
@@ -226,15 +226,15 @@ h1::after{
   }
 
   40% {
-    transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(8deg);
+    transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(8deg);opacity: 1;
   }
 
   50% {
-    transform: translate(var(--kx), var(--ky)) scale(1.08) rotate(-6deg);
+    transform: translate(var(--kx), var(--ky)) scale(1.08) rotate(-6deg);opacity: 1;
   }
 
   60% {
-    transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(4deg);
+    transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(4deg);opacity: 1;
   }
 
   80% {
@@ -556,15 +556,6 @@ window.addEventListener("load",()=>{
   },900);
 });
 </script>
-<script>
-window.addEventListener('scroll', () => {
-  const gallery = document.querySelector('.photo-gallery');
-  const scrollY = window.scrollY;
-  
-  // parallax: gerakan lebih lambat dari scroll
-  gallery.style.transform = `translateY(${scrollY * 0.3}px)`;
-});
-</script>
 
 <script>
 /* 🧚‍♀️ FAIRY RANDOM (KECUALI FAIRY A) */
@@ -630,8 +621,8 @@ window.addEventListener("load", () => {
   const kx = rect.left + rect.width / 2;
   const ky = rect.top + rect.height / 2;
 
-  fairy.style.setProperty("--kx", kx + "px");
-  fairy.style.setProperty("--ky", ky + "px");
+  fairy.style.setProperty("--kx", (kx-60) + "px");
+  fairy.style.setProperty("--ky", (ky-20) + "px");
 
   fairy.style.left = "0";
   fairy.style.top = "0";
