@@ -212,14 +212,40 @@ h1::after{
   filter:drop-shadow(0 0 14px rgba(134,239,172,.9));
 }
 
-@keyframes fairyA{
-  0%   {transform:translate(-140px, 18vh) rotate(0deg);}
-  15%  {transform:translate(10vw, 24vh) rotate(6deg);}
-  35%  {transform:translate(35vw, 12vh) rotate(-8deg);}
-  55%  {transform:translate(60vw, 28vh) rotate(10deg);}
-  75%  {transform:translate(85vw, 20vh) rotate(-6deg);}
-  100% {transform:translate(120vw, 32vh) rotate(0deg);}
+@keyframes fairyA-title{
+  0%{
+    transform:translate(-160px, 22vh) scale(0.85) rotate(-8deg);
+    opacity:0;
+  }
+
+  10%{opacity:1;}
+
+  /* mendekati judul */
+  25%{
+    transform:translate(var(--tx), calc(var(--ty) - 80px)) scale(1.05) rotate(6deg);
+  }
+
+  /* melayang tepat di atas Kanaya */
+  45%{
+    transform:translate(var(--tx), calc(var(--ty) - 40px)) scale(1.18) rotate(-6deg);
+  }
+
+  /* mengitari judul */
+  60%{
+    transform:translate(calc(var(--tx) + 30px), calc(var(--ty) - 60px)) scale(1.15) rotate(8deg);
+  }
+
+  75%{
+    transform:translate(calc(var(--tx) - 30px), calc(var(--ty) - 50px)) scale(1.15) rotate(-8deg);
+  }
+
+  /* pamit anggun */
+  100%{
+    transform:translate(120vw, -180px) scale(0.9) rotate(0deg);
+    opacity:0.9;
+  }
 }
+
 
 @keyframes fairyB{
   0%   {transform:translate(120vw, 42vh) rotate(0deg);}
@@ -393,7 +419,7 @@ h1::after{
 <body>
 
 <!-- FAIRIES -->
-<img src="tinker4.png" class="fairy" style="animation:fairyA 42s linear infinite;">
+<img src="tinker4.png" class="fairy fairy-main">
 <img src="tinker5.png" class="fairy" style="animation:fairyB 48s linear infinite;">
 <img src="tinker6.png" class="fairy" style="animation:fairyC 54s linear infinite;">
 <img src="tinker7.png" class="fairy" style="animation:fairyD 46s linear infinite;">
@@ -550,14 +576,14 @@ window.addEventListener('scroll', () => {
 </script>
 
 <script>
-/* 🧚‍♀️ FAIRY SPAWN BERSAMAAN + GERAK ACAK */
-const fairies = document.querySelectorAll('.fairy');
+<script>
+/* 🧚‍♀️ FAIRY RANDOM (KECUALI FAIRY A) */
+const fairies = document.querySelectorAll('.fairy:not(.fairy-main)');
 
-fairies.forEach((fairy, i) => {
+fairies.forEach(fairy => {
 
-  const animations = ['fairyA','fairyB','fairyC','fairyD','fairyE'];
+  const animations = ['fairyB','fairyC','fairyD','fairyE'];
 
-  /* animasi dasar beda */
   fairy.style.animationName =
     animations[Math.floor(Math.random()*animations.length)];
 
@@ -565,31 +591,27 @@ fairies.forEach((fairy, i) => {
   fairy.style.animationTimingFunction = 'linear';
   fairy.style.animationIterationCount = 'infinite';
 
-  /* spawn SERENTAK, posisi beda */
   fairy.style.left = (Math.random()*120 - 10) + 'vw';
   fairy.style.top  = (Math.random()*80) + 'vh';
 
-  /* karakter visual */
-  const flip  = Math.random() > 0.5 ? -1 : 1;
-
-  fairy.dataset.scale = scale;
-  fairy.dataset.flip  = flip;
-  fairy.dataset.dx = 0;
-  fairy.dataset.dy = 0;
+  const flip = Math.random() > 0.5 ? -1 : 1;
+  fairy.style.transform = `scaleX(${flip})`;
 
   fairy.style.opacity = 1;
-  fairy.style.transform = `scale(${scale}) scaleX(${flip})`;
 });
+</script>
 
-/* 🌀 GERAK ACAK SEMUA PERI (SERENTAK) */
+
+<script>
+/* 🌀 GERAK ACAK PERI (KECUALI FAIRY A) */
 setInterval(()=>{
-  fairies.forEach(fairy => {
+  document.querySelectorAll('.fairy:not(.fairy-main)').forEach(fairy => {
 
-    let dx = parseFloat(fairy.dataset.dx);
-    let dy = parseFloat(fairy.dataset.dy);
+    let dx = parseFloat(fairy.dataset.dx || 0);
+    let dy = parseFloat(fairy.dataset.dy || 0);
 
-    dx += (Math.random()*16 - 8);
-    dy += (Math.random()*12 - 6);
+    dx += (Math.random()*14 - 7);
+    dy += (Math.random()*10 - 5);
 
     dx = Math.max(-60, Math.min(60, dx));
     dy = Math.max(-40, Math.min(40, dy));
@@ -599,10 +621,36 @@ setInterval(()=>{
 
     fairy.style.transform = `
       translate(${dx}px, ${dy}px)
-      scaleX(${fairy.dataset.flip})
+      scaleX(${fairy.style.transform.includes('scaleX(-1)') ? -1 : 1})
     `;
   });
 }, 2600);
+</script>
+
+<script>
+/* 🧚‍♀️ FAIRY A — INTERAKSI KHUSUS JUDUL "KANAYA" */
+window.addEventListener("load",()=>{
+
+  const fairy = document.querySelector(".fairy-main");
+  const title = document.querySelector("h1");
+
+  if(!fairy || !title) return;
+
+  const r = title.getBoundingClientRect();
+
+  const x = r.left + r.width/2;
+  const y = r.top  + r.height/2;
+
+  fairy.style.setProperty("--tx", x + "px");
+  fairy.style.setProperty("--ty", y + "px");
+
+  fairy.style.left = "-160px";
+  fairy.style.top  = "20vh";
+
+  fairy.style.animation = "fairyA-title 44s ease-in-out infinite";
+  fairy.style.zIndex = 10;
+  fairy.style.opacity = 1;
+});
 </script>
 
 </body>
