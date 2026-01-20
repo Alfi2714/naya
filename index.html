@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surat Peri untuk Fairynaya ✨</title>
+<title>Surat Peri untuk Fairynaya 🧚‍♀️✨</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -113,18 +113,6 @@ body::before{
   filter:
     drop-shadow(0 0 10px rgba(255,215,0,.9))
     drop-shadow(0 0 22px rgba(34,197,94,.6));
-
-  animation:softFloat 6s ease-in-out infinite;
-}
-
-/* gerak sangat halus (hidup tapi tidak terbang) */
-@keyframes softFloat{
-  0%,100%{
-    transform:translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateY(-6px) rotate(2deg);
-  }
 }
 
 /* ===== LAYOUT ===== */
@@ -334,7 +322,37 @@ h1::after{
 .photo-gallery::-webkit-scrollbar-track{
   background:transparent;
 }
+/* 🧚‍♀️ TINKER POJOK LEBIH HIDUP (TETAP DI DALAM CARD) */
+.card-fairy{
+  animation:
+    softFloat 6s ease-in-out infinite,
+    fairyWander 10s ease-in-out infinite;
+}
 
+/* gerak leluasa tapi dibatasi */
+@keyframes fairyWander{
+  0%{
+    transform:translate(0,0);
+  }
+  25%{
+    transform:translate(-6px,4px);
+  }
+  50%{
+    transform:translate(-2px,-6px);
+  }
+  75%{
+    transform:translate(4px,-2px);
+  }
+  100%{
+    transform:translate(0,0);
+  }
+}
+
+/* 🎲 RANDOM START POSITION */
+.fairy {
+  top: calc(var(--start-y) * 1vh);
+  left: calc(var(--start-x) * 1vw);
+}
 
 </style>
 </head>
@@ -342,9 +360,11 @@ h1::after{
 <body>
 
 <!-- FAIRIES -->
-<img src="tinker1.png" class="fairy" style="animation:fairyA 60s linear infinite;">
-<img src="tinker1.png" class="fairy" style="animation:fairyB 66s linear infinite;">
-<img src="tinker1.png" class="fairy" style="animation:fairyC 72s linear infinite;">
+<img src="tinker4.png" class="fairy" style="animation:fairyA 60s linear infinite;">
+<img src="tinker5.png" class="fairy" style="animation:fairyB 66s linear infinite;">
+<img src="tinker6.png" class="fairy" style="animation:fairyC 72s linear infinite;">
+<img src="tinker7.png" class="fairy" style="animation:fairyA 68s linear infinite;">
+<img src="tinker8.png" class="fairy" style="animation:fairyB 74s linear infinite;">
 
 <!-- AUDIO -->
 <audio id="bgm" src="lagu.mp3" loop></audio>
@@ -379,7 +399,7 @@ h1::after{
       Di hari lahirmu, semoga hidupmu terasa lebih ringan, hatimu tetap hangat, dan setiap hari menemukan alasan kecil untuk tersenyum—dengan atau tanpa sayap.<br><br>
           </div>
 
-    <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya</div>
+    <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya🧚‍♀️</div>
   </div>
 </div></div> <!-- akhir .card -->
 
@@ -496,6 +516,63 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
+<script>
+/* 🧚‍♀️ FAIRY SPAWN BERSAMAAN + GERAK ACAK */
+const fairies = document.querySelectorAll('.fairy');
+
+fairies.forEach((fairy, i) => {
+
+  const animations = ['fairyA','fairyB','fairyC'];
+
+  /* animasi dasar beda */
+  fairy.style.animationName =
+    animations[Math.floor(Math.random()*animations.length)];
+
+  fairy.style.animationDuration = (42 + Math.random()*20) + 's';
+  fairy.style.animationTimingFunction = 'linear';
+  fairy.style.animationIterationCount = 'infinite';
+
+  /* spawn SERENTAK, posisi beda */
+  fairy.style.left = (Math.random()*120 - 10) + 'vw';
+  fairy.style.top  = (Math.random()*80) + 'vh';
+
+  /* karakter visual */
+  const scale = 0.75 + Math.random()*0.55;
+  const flip  = Math.random() > 0.5 ? -1 : 1;
+
+  fairy.dataset.scale = scale;
+  fairy.dataset.flip  = flip;
+  fairy.dataset.dx = 0;
+  fairy.dataset.dy = 0;
+
+  fairy.style.opacity = 1;
+  fairy.style.transform = `scale(${scale}) scaleX(${flip})`;
+});
+
+/* 🌀 GERAK ACAK SEMUA PERI (SERENTAK) */
+setInterval(()=>{
+  fairies.forEach(fairy => {
+
+    let dx = parseFloat(fairy.dataset.dx);
+    let dy = parseFloat(fairy.dataset.dy);
+
+    dx += (Math.random()*16 - 8);
+    dy += (Math.random()*12 - 6);
+
+    dx = Math.max(-60, Math.min(60, dx));
+    dy = Math.max(-40, Math.min(40, dy));
+
+    fairy.dataset.dx = dx;
+    fairy.dataset.dy = dy;
+
+    fairy.style.transform = `
+      translate(${dx}px, ${dy}px)
+      scale(${fairy.dataset.scale})
+      scaleX(${fairy.dataset.flip})
+    `;
+  });
+}, 2600);
+</script>
+
 </body>
 </html>
-
