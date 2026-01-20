@@ -368,6 +368,7 @@ h1::after{
 }
 .photo-track img:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 14px #bbf7d0, 0 0 28px #22c55e;
 }
 
 /* scrollbar cantik */
@@ -532,29 +533,6 @@ const fade=setInterval(()=>{
   audio.volume=v;
 },220);
 document.body.addEventListener("click",()=>audio.play(),{once:true});
-</script>
-
-<script>
-/* ✨ SPARKLE JATUH KE HURUF K */
-window.addEventListener("load",()=>{
-  const title=document.querySelector("h1");
-  if(!title) return;
-
-  const rect=title.getBoundingClientRect();
-
-  // posisi huruf K (kira-kira sisi kiri judul)
-  const kX = rect.left + rect.width * 0.08;
-  const kY = rect.top + rect.height * 0.55;
-
-  setInterval(()=>{
-    const s=document.createElement("div");
-    s.className="sparkle";
-    s.style.left=(kX + (Math.random()*6-3))+"px";
-    s.style.top=(kY - 30)+"px";
-    document.body.appendChild(s);
-    setTimeout(()=>s.remove(),1600);
-  },900);
-});
 </script>
 
 <script>
