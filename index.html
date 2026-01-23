@@ -329,14 +329,13 @@ h1::after{
 .photo-gallery{
   position: relative;
   z-index: 5;
-  margin-top: 40px; /* geser 40px ke atas */
+  margin-top: 0;          /* ⬅️ hapus negatif */
+  padding-top: 40px;     /* ⬅️ ganti padding */
+  padding-bottom: 14px;
   width:100%;
   overflow-x:auto;
-  padding:2px 0 14px;
-  position: relative;  /* pastikan z-index tetap berfungsi */
-  z-index: 5;          /* tetap muncul di atas overlay */
 }
-
+  
 .photo-track {
   display: inline-flex;     /* biar ukurannya sesuai isi */
   gap: 14px;
@@ -614,4 +613,5 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
