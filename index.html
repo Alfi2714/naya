@@ -68,20 +68,6 @@ body::before{
   z-index:0;
 }
 
-.message{
-  margin-top:26px;
-  font-family:"IM Fell English", serif;
-  font-size:1.15rem;
-  line-height:1.9;
-  color:#3b2f1d;
-
-  max-height:45vh;
-  overflow-y:auto;
-  padding-right:10px;
-  scrollbar-width:thin;
-  scrollbar-color:#86efac transparent;
-}
-
 .message::-webkit-scrollbar{
   width:6px;
 }
@@ -356,7 +342,7 @@ h1::after{
   </span>a
 </h1>
     <div class="subtitle">A Birthday Letter From Pixie Hollow</div>
-
+    
     <div class="message">
       Di Pixie Hollow, setiap cahaya kecil dipercaya punya arti.<br>
       Dan bagiku, kamu adalah cahaya itu.<br><br>
@@ -418,7 +404,6 @@ setInterval(()=>confetti({
   spread:60,
   origin:{x:Math.random(), y:0}
 }),700);
-
 setInterval(()=>{
   const l=document.createElement("div");
   l.className="leaf";
@@ -427,7 +412,6 @@ setInterval(()=>{
   document.body.appendChild(l);
   setTimeout(()=>l.remove(),26000);
 },600);
-
 setInterval(()=>{
   document.querySelectorAll(".fairy").forEach(f=>{
     const r=f.getBoundingClientRect();
@@ -453,47 +437,33 @@ document.body.addEventListener("click",()=>audio.play(),{once:true});
 </script>
 
 <script>
-
 const fairies = document.querySelectorAll('.fairy:not(.fairy-main)');
-
 fairies.forEach(fairy => {
-
   const animations = ['fairyB','fairyC','fairyD','fairyE'];
-
   fairy.style.animationName =
     animations[Math.floor(Math.random()*animations.length)];
-
   fairy.style.animationDuration = (42 + Math.random()*20) + 's';
   fairy.style.animationTimingFunction = 'linear';
   fairy.style.animationIterationCount = 'infinite';
-
   fairy.style.left = (Math.random()*120 - 10) + 'vw';
   fairy.style.top  = (Math.random()*80) + 'vh';
-
   const flip = Math.random() > 0.5 ? -1 : 1;
   fairy.style.transform = `scaleX(${flip})`;
-
   fairy.style.opacity = 1;
 });
 </script>
 
-
 <script>
 setInterval(()=>{
   document.querySelectorAll('.fairy:not(.fairy-main)').forEach(fairy => {
-
     let dx = parseFloat(fairy.dataset.dx || 0);
     let dy = parseFloat(fairy.dataset.dy || 0);
-
     dx += (Math.random()*14 - 7);
     dy += (Math.random()*10 - 5);
-
     dx = Math.max(-60, Math.min(60, dx));
     dy = Math.max(-40, Math.min(40, dy));
-
     fairy.dataset.dx = dx;
     fairy.dataset.dy = dy;
-
     fairy.style.transform = `
       translate(${dx}px, ${dy}px)
       scaleX(${fairy.style.transform.includes('scaleX(-1)') ? -1 : 1})
@@ -528,4 +498,3 @@ window.addEventListener("load", () => {
 </script>
 </body>
 </html>
-
