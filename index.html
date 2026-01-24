@@ -102,7 +102,7 @@ body::before{
   align-items:center;
   justify-content:center;
   padding:24px;
-  min-height: 100vh;
+  min-height: 100vh;}
 
 .card{
   background:rgba(255,248,220,0.3);
@@ -315,11 +315,15 @@ h1::after{
   50%{transform:translate(-2px,-6px);}
   75%{transform:translate(4px,-2px);}
   100%{transform:translate(0,0);}}
+  
+@keyframes softFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
 
 .fairy {
   top: calc(var(--start-y) * 1vh);
   left: calc(var(--start-x) * 1vw);}
-
 </style>
 </head>
 
@@ -359,8 +363,8 @@ h1::after{
 
       Di hari lahirmu,
       Semoga hidupmu terasa lebih ringan, lebih hangat<br>
-      dan selalu dipenuhi hal-hal kecil yang membuatmu tersenyum—dengan atau tanpa sayap.<br><br>
-
+      dan selalu dipenuhi hal-hal kecil yang membuatmu tersenyum—dengan atau tanpa sayap.<br><br></div>
+    
     <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya🧚‍♀️</div>
   </div>
  </div>
@@ -396,7 +400,6 @@ h1::after{
     <img src="foto27.jpg" alt="I Love Kanaya 27">
   </div>
 </div>
-
 
 <script>
 setInterval(()=>confetti({
