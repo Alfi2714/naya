@@ -3,36 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surat Peri untuk Fairynaya 🧚‍♀️✨</title>
+<title>Surat Peri untuk Fairy Naya 🧚‍♀️✨</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 *{box-sizing:border-box}
-/* 🧚‍♀️ TINKER DUDUK DI HURUF Y */
 .title{
   position:relative;
-  display:inline-block;
-}
+  display:inline-block;}
 
 .y-wrap{
   position:relative;
-  display:inline-block;
-}
+  display:inline-block;}
 
-/* fairy duduk */
 .tinker-y{
   position:absolute;
-  bottom:60%;           /* posisi duduk di atas y */
+  bottom:60%;
   left:100%;
   transform:translateX(-90%);
-  width:36px;           /* ukuran fairy */
+  width:36px;
   z-index:7;
-  pointer-events:none;
-}
+  pointer-events:none;}
 
-/* muncul pelan */
 @keyframes fairySitIn{
   from{
     opacity:0;
@@ -40,11 +34,10 @@
   }
   to{
     opacity:1;
-    transform:translate(-50%,0) scale(1);
-  }
+    transform:translate(-50%,0) scale(1);}
 }
 
-/* gerak halus saat duduk */
+
 @keyframes fairyIdle{
   0%,100%{ transform:translate(-50%,0) }
   50%{ transform:translate(-50%,-4px) }
@@ -52,17 +45,17 @@
 
 body {
   margin: 0;
-  height: auto;          /* jangan kunci di 100vh */
-  min-height: 100vh;     /* biar minimal setinggi layar */
-  overflow-x: hidden;    /* sembunyikan horizontal scroll */
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body {
   background-image: url("background.jpg");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: cover;       /* cover seluruh viewport */
-  background-attachment: fixed; /* tetap terlihat saat scroll */
+  background-size: cover;
+  background-attachment: fixed;
 }
 body::before{
   content:"";
@@ -82,14 +75,13 @@ body::before{
   line-height:1.9;
   color:#3b2f1d;
 
-  max-height:45vh;          /* tinggi area scroll */
-  overflow-y:auto;          /* aktifkan scroll */
-  padding-right:10px;       /* jarak scrollbar */
-  scrollbar-width:thin;     /* Firefox */
+  max-height:45vh;
+  overflow-y:auto;
+  padding-right:10px;
+  scrollbar-width:thin;
   scrollbar-color:#86efac transparent;
 }
 
-/* Scrollbar halus (Chrome, Edge, Safari) */
 .message::-webkit-scrollbar{
   width:6px;
 }
@@ -101,7 +93,6 @@ body::before{
   border-radius:10px;
 }
 
-/* 🧚‍♀️ FAIRY PEMANIS DI CARD */
 .card-fairy{
   position:absolute;
   top:15px;
@@ -115,10 +106,8 @@ body::before{
 
   animation:
     softFloat 6s ease-in-out infinite,
-    fairyWander 10s ease-in-out infinite;
-}
+    fairyWander 10s ease-in-out infinite;}
 
-/* ===== LAYOUT ===== */
 .container{
   position:relative;
   z-index:3;
@@ -127,13 +116,11 @@ body::before{
   align-items:center;
   justify-content:center;
   padding:24px;
-  min-height: 100vh;            /* biar menyesuaikan konten */
-}
+  min-height: 100vh;
 
-/* ===== LETTER CARD ===== */
 .card{
-  background:rgba(255,248,220,0.3); /* transparan */
-  backdrop-filter: blur(4px);       /* efek kaca lembut */
+  background:rgba(255,248,220,0.3);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius:22px;
   padding:34px 28px;
@@ -144,32 +131,27 @@ body::before{
     0 30px 60px rgba(0,0,0,.25),
     inset 0 0 40px rgba(255,255,255,.35);
   position:relative;
-  z-index:2;
-}
+  z-index:2;}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px)}
-  to{opacity:1}
-}
+  to{opacity:1}}
 
-/* ===== ✨ ENGRAVED NAME ===== */
 h1{
   margin:0;
- font-family:"Calligraffitti", cursive; /* atau font pilihanmu */
+ font-family:"Calligraffitti", cursive;
   font-size:2.7rem;
-  color:#ffffff; /* PUTIH */
+  color:#ffffff;
   position:relative;
   text-shadow:
     0 0 6px #6ee7b7,
     0 0 16px #34d399,
     0 0 32px #22c55e,
-    0 0 60px rgba(34,197,94,.85);
-}
+    0 0 60px rgba(34,197,94,.85);}
 @keyframes engrave{
   0%{background-position:0%}
   50%{background-position:100%}
-  100%{background-position:0%}
-}
+  100%{background-position:0%}}
 h1::after{
   content:"Kanaya";
   position:absolute;
@@ -178,74 +160,44 @@ h1::after{
     0 0 6px #6ee7b7,
     0 0 18px #34d399,
     0 0 40px #22c55e;
-  pointer-events:none;
-}
+  pointer-events:none;}
 
-/* ===== TEXT ===== */
 .subtitle{
   margin-top:10px;
   font-family:"IM Fell English", serif;
   font-style:italic;
   letter-spacing:2px;
-  color:#bbf7d0; /* hijau terang */
+  color:#bbf7d0;
   text-shadow:
     0 0 4px rgba(34,197,94,.6),
-    0 0 10px rgba(34,197,94,.4);
-}
+    0 0 10px rgba(34,197,94,.4);}
 .message{
   margin-top:26px;
   font-family:"IM Fell English", serif;
   font-size:1.15rem;
   line-height:1.9;
-  color:#ffffff;
-}
+  color:#ffffff;}
 .footer{
   margin-top:28px;
   font-style:italic;
   opacity:.75;
- color:#ffffff;
-}
+ color:#ffffff;}
 
-/* ===== FAIRIES ===== */
 .fairy{
   position:fixed;
   width:50px;
   z-index:7;
   pointer-events:none;
-  filter:drop-shadow(0 0 14px rgba(134,239,172,.9));
-}
+  filter:drop-shadow(0 0 14px rgba(134,239,172,.9));}
 
 @keyframes fairyA-touchK {
-  0% {
-    transform: translate(-180px, 20vh) scale(1) rotate(0deg);
-    opacity: 1;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  40% {
-    transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(8deg);opacity: 1;
-  }
-
-  50% {
-    transform: translate(var(--kx), var(--ky)) scale(1.08) rotate(-6deg);opacity: 1;
-  }
-
-  60% {
-    transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(4deg);opacity: 1;
-  }
-
-  80% {
-    transform: translate(calc(var(--kx) + 120px), calc(var(--ky) - 40px)) rotate(-6deg);
-  }
-
-  100% {
-    transform: translate(120vw, 30vh) rotate(0deg);
-    opacity: 0;
-  }
-}
+  0% {transform: translate(-180px, 20vh) scale(1) rotate(0deg);opacity: 1;}
+  20% {opacity: 1;}
+  40% {transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(8deg);opacity: 1;}
+  50% {transform: translate(var(--kx), var(--ky)) scale(1.08) rotate(-6deg);opacity: 1;}
+  60% {transform: translate(var(--kx), var(--ky)) scale(1.05) rotate(4deg);opacity: 1;}
+  80% {transform: translate(calc(var(--kx) + 120px), calc(var(--ky) - 40px)) rotate(-6deg);}
+  100% {transform: translate(120vw, 30vh) rotate(0deg);opacity: 0;}}
 
 @keyframes fairyB{
   0%   {transform:translate(120vw, 42vh) rotate(0deg);}
@@ -253,16 +205,14 @@ h1::after{
   40%  {transform:translate(65vw, 48vh) rotate(8deg);}
   60%  {transform:translate(40vw, 36vh) rotate(-10deg);}
   80%  {transform:translate(15vw, 52vh) rotate(6deg);}
-  100% {transform:translate(-140px, 46vh) rotate(0deg);}
-}
+  100% {transform:translate(-140px, 46vh) rotate(0deg);}}
 
 @keyframes fairyC{
   0%   {transform:translate(28vw, -160px) rotate(-8deg);}
   20%  {transform:translate(34vw, 16vh) rotate(6deg);}
   45%  {transform:translate(40vw, 42vh) rotate(-10deg);}
   70%  {transform:translate(46vw, 68vh) rotate(8deg);}
-  100% {transform:translate(52vw, 120vh) rotate(0deg);}
-}
+  100% {transform:translate(52vw, 120vh) rotate(0deg);}}
 
 @keyframes fairyD{
   0%   {transform:translate(120vw, 60vh) rotate(0deg);}
@@ -270,8 +220,7 @@ h1::after{
   36%  {transform:translate(64vw, 66vh) rotate(10deg);}
   54%  {transform:translate(42vw, 40vh) rotate(-12deg);}
   72%  {transform:translate(18vw, 62vh) rotate(8deg);}
-  100% {transform:translate(-140px, 50vh) rotate(0deg);}
-}
+  100% {transform:translate(-140px, 50vh) rotate(0deg);}}
 
 @keyframes fairyE{
   0%{transform:translate(-140px, 120vh) rotate(-8deg);
@@ -281,13 +230,8 @@ h1::after{
   45%{transform:translate(36vw, 62vh) rotate(-10deg);}
   65%{transform:translate(58vw, 38vh) rotate(12deg);}
   85%{transform:translate(76vw, 14vh) rotate(-6deg);}
-  100%{transform:translate(92vw, -160px) rotate(0deg);}
-}
+  100%{transform:translate(92vw, -160px) rotate(0deg);}}
 
-
-
-
-/* ===== ✨ SPARKLE TRAIL ===== */
 .sparkle{
   position:fixed;
   width:6px;
@@ -295,7 +239,7 @@ h1::after{
   border-radius:50%;
   background:radial-gradient(circle,#bbf7d0,#22c55e);
   pointer-events:none;
-  z-index:9; /* di atas teks */
+  z-index:9;
   opacity:.9;
   animation:sparkleFade 1.6s ease-out forwards;
 }
@@ -305,7 +249,6 @@ h1::after{
   to{transform:translateY(12px) scale(0); opacity:0}
 }
 
-/* ===== 🍃 LEAVES FOREGROUND ===== */
 .leaf{
   position:fixed;
   top:-40px;
@@ -325,31 +268,31 @@ h1::after{
 @media(max-width:480px){
   h1{font-size:2.2rem}
 }
-/* 📸 PHOTO GALLERY */
+
 .photo-gallery{
   position: relative;
   z-index: 5;
-  margin-top: 0;          /* ⬅️ hapus negatif */
-  padding-top: 40px;     /* ⬅️ ganti padding */
+  margin-top: 0;
+  padding-top: 40px;
   padding-bottom: 14px;
   width:100%;
   overflow-x:auto;
 }
   
 .photo-track {
-  display: inline-flex;     /* biar ukurannya sesuai isi */
+  display: inline-flex;
   gap: 14px;
   padding: 0 6px;
 }
 .photo-gallery {
-  text-align: center;       /* center inline-flex */
-  overflow-x: auto;         /* tetap scrollable */
-  white-space: nowrap;      /* biar horizontal tetap inline */
+  text-align: center;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .photo-track img{
   width:120px;
-  aspect-ratio:1 / 1;   /* PASTI PERSEGI */
+  aspect-ratio:1 / 1;
   object-fit:cover;
   border-radius:16px;
   flex-shrink:0;
@@ -361,7 +304,6 @@ h1::after{
   transition:.3s ease;
 }
 
-/* efek hover (desktop) */
 .photo-track img:hover{
   transform:scale(1.05);
 }
@@ -370,7 +312,6 @@ h1::after{
   box-shadow: 0 0 14px #bbf7d0, 0 0 28px #22c55e;
 }
 
-/* scrollbar cantik */
 .photo-gallery::-webkit-scrollbar{
   height:6px;
 }
@@ -382,44 +323,28 @@ h1::after{
   background:transparent;
 }
 
-/* gerak leluasa tapi dibatasi */
 @keyframes fairyWander{
-  0%{
-    transform:translate(0,0);
-  }
-  25%{
-    transform:translate(-6px,4px);
-  }
-  50%{
-    transform:translate(-2px,-6px);
-  }
-  75%{
-    transform:translate(4px,-2px);
-  }
-  100%{
-    transform:translate(0,0);
-  }
-}
+  0%{transform:translate(0,0);}
+  25%{transform:translate(-6px,4px);}
+  50%{transform:translate(-2px,-6px);}
+  75%{transform:translate(4px,-2px);}
+  100%{transform:translate(0,0);}}
 
-/* 🎲 RANDOM START POSITION */
 .fairy {
   top: calc(var(--start-y) * 1vh);
-  left: calc(var(--start-x) * 1vw);
-}
+  left: calc(var(--start-x) * 1vw);}
 
 </style>
 </head>
 
 <body>
 
-<!-- FAIRIES -->
 <img src="tinker4.png" class="fairy fairy-main" alt="Fairy A">
 <img src="tinker5.png" class="fairy" style="animation:fairyB 48s linear infinite;">
 <img src="tinker6.png" class="fairy" style="animation:fairyC 54s linear infinite;">
 <img src="tinker7.png" class="fairy" style="animation:fairyD 46s linear infinite;">
 <img src="tinker8.png" class="fairy" style="animation:fairyE 52s linear infinite;">
 
-<!-- AUDIO -->
 <audio id="bgm" src="lagu.mp3" loop></audio>
 
 <div class="container">
@@ -445,17 +370,15 @@ h1::after{
       Seperti Tinkerbell yang terbang mengikuti keyakinannya sendiri,<br>
       kamu menjalani hidup dengan caramu,<br>
       pelan tapi pasti, sederhana namun bermakna.<br><br>
-      
-      Semoga hidupmu terasa lebih ringan, lebih hangat<br>
-      dan selalu dipenuhi hal-hal kecil yang membuatmu tersenyum.<br><br>
 
-      Di hari lahirmu, semoga hidupmu terasa lebih ringan, hatimu tetap hangat, dan setiap hari menemukan alasan kecil untuk tersenyum—dengan atau tanpa sayap.<br><br>
-          </div>
+      Di hari lahirmu,
+      Semoga hidupmu terasa lebih ringan, lebih hangat<br>
+      dan selalu dipenuhi hal-hal kecil yang membuatmu tersenyum—dengan atau tanpa sayap.<br><br>
 
     <div class="footer">— Selamat Ulang Tahun Kesayanganku Naya🧚‍♀️</div>
   </div>
  </div>
-<!-- 📸 GALERI KENANGAN -->
+
 <div class="photo-gallery">
   <div class="photo-track">
     <img src="foto1.jpg" alt="I Love Kanaya 1">
@@ -485,20 +408,17 @@ h1::after{
     <img src="foto25.jpg" alt="I Love Kanaya 25">
     <img src="foto26.jpg" alt="I Love Kanaya 26">
     <img src="foto27.jpg" alt="I Love Kanaya 27">
-    <!-- tambah sebanyak yang kamu mau -->
   </div>
 </div>
 
 
 <script>
-/* 🎉 CONFETTI HALUS */
 setInterval(()=>confetti({
   particleCount:2,
   spread:60,
   origin:{x:Math.random(), y:0}
 }),700);
 
-/* 🍃 LEAVES */
 setInterval(()=>{
   const l=document.createElement("div");
   l.className="leaf";
@@ -508,7 +428,6 @@ setInterval(()=>{
   setTimeout(()=>l.remove(),26000);
 },600);
 
-/* ✨ FAIRY SPARKLE TRAIL */
 setInterval(()=>{
   document.querySelectorAll(".fairy").forEach(f=>{
     const r=f.getBoundingClientRect();
@@ -521,7 +440,6 @@ setInterval(()=>{
   });
 },280);
 
-/* 🎶 MUSIC FADE-IN */
 const audio=document.getElementById("bgm");
 audio.volume=0;
 audio.play().catch(()=>{});
@@ -535,7 +453,7 @@ document.body.addEventListener("click",()=>audio.play(),{once:true});
 </script>
 
 <script>
-/* 🧚‍♀️ FAIRY RANDOM (KECUALI FAIRY A) */
+
 const fairies = document.querySelectorAll('.fairy:not(.fairy-main)');
 
 fairies.forEach(fairy => {
@@ -561,7 +479,6 @@ fairies.forEach(fairy => {
 
 
 <script>
-/* 🌀 GERAK ACAK PERI (KECUALI FAIRY A) */
 setInterval(()=>{
   document.querySelectorAll('.fairy:not(.fairy-main)').forEach(fairy => {
 
@@ -611,3 +528,4 @@ window.addEventListener("load", () => {
 </script>
 </body>
 </html>
+
